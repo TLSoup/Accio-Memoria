@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Home } from './Screens/home';
-import { Error } from './Screens/Error'
+import { Home, Error } from './Screens/screens-index';
 
 
 function App() {
@@ -10,8 +9,8 @@ function App() {
     <Router>
       <div classname="App">
         <Routes>
-          <Route index element={<Home/>}/>
-          <Route index element={<Error/>}/>
+          <Route index element={<Home />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </Router>
