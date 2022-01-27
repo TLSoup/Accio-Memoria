@@ -1,17 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Home } from './Screens/home';
-import { Error } from './Screens/Error'
+import { Home, Error, Create, Activity } from './Screens/screens-index';
+import { Navigation } from "./Components/navigation";
 
 
 function App() {
   return (
     <Router>
       <div classname="App">
+        <Navigation />
         <Routes>
-          <Route index element={<Home/>}/>
-          <Route index element={<Error/>}/>
+          <Route index element={<Home />} />
+          <Route path="create" element={<Create />} />
+          <Route path="activity" element={<Activity />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </Router>
