@@ -1,7 +1,9 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleUser, faMoon } from "@fortawesome/free-solid-svg-icons";
+
+import './navigation.css';
 
 export const Navigation = () => {
     return (
@@ -13,7 +15,7 @@ export const Navigation = () => {
                     <Nav.Link href="/activity">Activity</Nav.Link>
                 </Nav>
                 <Nav className="pe-5">
-                    <Navbar.Text><FontAwesomeIcon icon={faMoon} /></Navbar.Text>
+                    <Navbar.Text><FontAwesomeIcon icon={faMoon} className="darkMode-icon"/></Navbar.Text>
                 </Nav>
                 <Nav className="d-flex">
                 <Navbar.Text href="/"><FontAwesomeIcon icon={faCircleUser} /></Navbar.Text>
