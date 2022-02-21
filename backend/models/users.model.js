@@ -20,10 +20,10 @@ const userSchema = new mongoose.Schema({
     lowercase: false
   },
   avatar: {
-      type: Buffer,
+      type: String,
       required: false,
       unique: false,
   }
 });
 
-module.exports = mongoose.model("User", userSchema)
+module.exports = mongoose.model("Users", userSchema)

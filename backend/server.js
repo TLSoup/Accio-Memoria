@@ -7,7 +7,7 @@ const cors = require ('cors');
 //const mongoose = require ('mongoose');
 
 /* To-Do: 
-    Create Models & Routes
+    Create Routes
         * User
         * Tasks
         * Set up MongoDB/Atlas
