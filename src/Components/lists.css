@@ -21,3 +21,14 @@
     font-size: calc(10px + (14 - 10) * ((100vw - 300px) / (1600 - 300)));
     font-weight: 700;
 }
+
+.current-day {
+    font-size: calc(25px + (40 - 25) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 700;
+    line-height: 90%;
+}
+
+.current-mdy {
+    font-size: calc(18px + (25 - 18) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 400;
+}
