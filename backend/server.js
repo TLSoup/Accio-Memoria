@@ -6,6 +6,13 @@ const cookieParser = require('cookie-parser');
 const cors = require ('cors');
 //const mongoose = require ('mongoose');
 
+/* To-Do: 
+    Create Models & Routes
+        * User
+        * Tasks
+        * Set up MongoDB/Atlas
+*/
+
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
@@ -16,3 +23,4 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Listenon port ${PORT} for requests...`))
+

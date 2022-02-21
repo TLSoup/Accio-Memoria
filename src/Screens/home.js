@@ -8,14 +8,14 @@ import '../index.css'
 export const Home = () => {
     return (
         <Container>
-            <section id="date">
+            <section>
                 <Row>
                     <Col className="text-center">
                         <CurrentDate />
                     </Col>
                 </Row>
             </section>
-            <section id="top-cards">
+            <section>
                 <Row>
                     <Col sm={7}>
                         <PriorityCard />
