@@ -1,56 +1,75 @@
-import mongoose from "mongoose";
-import Users from "../models/users.model";
+const router = require('express').Router();
+let UserModel = require('../models/users.model');
 
-export const getAllUsers = async (req, res) => {
-    try {
-        const users = await Users.find();
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(404).json({ message: error });
-    }
-};
-export const getUser = async (req, res) => {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id))
-        return res.status(404).send(`No user with id: ${id}`);
-    try {
-        const user = await Users.find({ _id: id });
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(404).json({ message: error });
-    }
-};
-
-export const postUser = async (req, res) => {
-    const user = req.body;
-    const existing = await Users.find({ email: req.body.email });
-    if (existing < 1) {
-        const newUser = new Users({
-            ...user,
-            createdAt: new Date().toISOString(),
+router.get('/', (req, res) => {
+    const { email } = req.body;
+    
+    // return document searched by email
+    if (email) {
+        UserModel.find({ email })
+        .then(document => {
+            res.status(200).json(document);
+        })
+        .catch(err => {
+            res.status(404).send(`Did not find the user. Error: ${err}`);
         });
-        try {
-            await newUser.save();
-            res.status(201).json(newUser);
-        } catch (error) {
-            res.status(409).json({ message: error });
-        }
+    } else {
+        UserModel.find()
+        .then(document => {
+            res.status(200).json(document);
+        })
+        .catch(err => {
+            res.status(404).send(`Did not find the user. Error: ${err}`);
+        }); 
     }
-};
+});
 
-export const patchUser = async (req, res) => {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id))
-        return res.status(404).send(`No user with id: ${id}`);
-    const updatedUser = req.body;
-    const user = await Users.findByIdAndUpdate(id, updatedUser, { new: true });
-    res.json(user);
-};
+router.post('/createNewUser', (req, res) => {
+    const { name, email, password, avatar } = req.body;
+    let newUserDocument = new UserModel({ 
+        name,
+        email,
+        password,
+        avatar,
+    });
+    newUserDocument.save().then(document => {
+        console.log(document);
 
-export const deleteUser = async (req, res) => {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id))
-        return res.status(404).send(`No user with id: ${id}`);
-    await Users.findByIdAndRemove(id);
-    res.json({ message: "user deleted successfully" });
-};
+        res.status(200).send(`Successfully created new user!`);
+    }).catch(err => {
+        res.status(400).send(`Failed to create the user. Error: ${err}`);
+    });
+});
+
+router.patch('/', (req, res) => {
+    const { email, newName, newEmail, newPassword, newAvatar } = req.body;
+    let updatedUserDocument = {};
+
+    //check for existence of object properties (order history will update itself after a purchase, so it is omitted here)
+    if (newName) updatedUserDocument.name = newName;
+    if (newEmail) updatedUserDocument.email = newEmail;
+    if (newPassword) updatedUserDocument.password = newPassword;
+    if (newAvatar) updatedUserDocument.avatar = newAvatar;
+
+    //update document with _id, firstName, lastName, email, password
+    UserModel.findOneAndUpdate({ email }, updatedUserDocument, { new: true })
+        .then(document => {
+            res.status(200).json(document);
+        })
+        .catch(err => {
+            res.status(404).send(`Did not find user to update. Error: ${err}`);
+        });
+});
+
+router.delete('/', (req, res) => {
+    const { _id } = req.body;
+    UserModel.findOneAndDelete({ _id })
+        .then(document => {
+            res.status(200).json(document);
+        })
+        .catch(err => {
+            res.status(404).send(`Did not find user to delete. Error: ${err}`);
+        });
+});
+
+module.exports = router;
