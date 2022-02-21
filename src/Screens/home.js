@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import { PriorityCard, LookingAheadCard, CurrentDate } from "../Components/component-index";
+import { PriorityCard, LookingAheadCard, CurrentDate, AllTasksCard } from "../Components/component-index";
 
 import '../index.css'
 
@@ -15,7 +15,7 @@ export const Home = () => {
                     </Col>
                 </Row>
             </section>
-            <section id="cards">
+            <section id="top-cards">
                 <Row>
                     <Col sm={7}>
                         <PriorityCard />
@@ -25,6 +25,14 @@ export const Home = () => {
                     </Col>
                 </Row>
             </section>
+            <section>
+                <Row>
+                    <Col>
+                        <AllTasksCard />
+                    </Col>
+                </Row>
+            </section>
+
         </Container>
 
     );
