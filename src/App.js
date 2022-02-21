@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Home, Error, Create, Activity } from './Screens/screens-index';
-import { Navigation } from "./Components/navigation";
+import { Navigation } from "./Components/component-index";
 
 
 function App() {

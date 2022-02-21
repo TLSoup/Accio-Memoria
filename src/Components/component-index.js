@@ -1,1 +1,2 @@
-export { Navigation } from '.navigation.js';
+export { Navigation } from './navigation';
+export { PriorityCard } from './priority-card';
