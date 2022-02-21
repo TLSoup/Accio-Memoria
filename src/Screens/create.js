@@ -1,6 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
+/* To-Do:
+    * Build out form to match task schema
+    * On Submit updates tasks list    
+*/
+
 export const Create = () => {
     return (
         <Container>

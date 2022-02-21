@@ -1,10 +1,18 @@
 import React from "react";
-import { Card, ListGroup, Col, Row, Form } from 'react-bootstrap';
+import { Card, ListGroup, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
+import { TaskStatusDropdown } from "./component-index";
+
 import './lists.css';
 import '../index.css';
+
+/*  TO-DO: 
+        * Dynamic list pulling Icon, task name and due date from Tasks for Card Body
+        * Drag and drop task ordering
+        * Drag and drop tasks between cards
+*/
 
 export const PriorityCard = () => {
     return (
@@ -37,19 +45,13 @@ export const PriorityCard = () => {
                     <Col>
                         <Row>
                             <Col sm={10}>
-                                <Form.Select aria-label="Status">
-                                    <option>Not Started</option>
-                                    <option value="In Progress">In Progress</option>
-                                    <option value="Waiting">Waiting</option>
-                                    <option value="Done">Done</option>
-                                </Form.Select>
+                                <TaskStatusDropdown />
                             </Col>
                             <Col sm={2}>
                                 <FontAwesomeIcon className="reorder-icon" icon={faBars} ></FontAwesomeIcon>
                             </Col>
                         </Row>
                     </Col>
-
                 </Row>
             </Card.Body>
         </Card>
