@@ -8,7 +8,7 @@ import { Navigation } from "./Components/component-index";
 function App() {
   return (
     <Router>
-      <div classname="App">
+      <div className="App">
         <Navigation />
         <Routes>
           <Route index element={<Home />} />
