@@ -5,5 +5,19 @@
 
 .reorder-icon {
     float: right;
-    padding: 5px  10px 0 10px;
+    padding: 5px 0 0 5px;
+}
+
+.form-select {
+    font-size: 12px !important;
+}
+
+.card-body {
+    font-size: calc(10px + (14 - 10) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: normal;
+}
+
+.list-label {
+    font-size: calc(10px + (14 - 10) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 700;
 }

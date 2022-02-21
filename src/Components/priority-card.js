@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 import './lists.css';
+import '../index.css';
 
 export const PriorityCard = () => {
     return (
